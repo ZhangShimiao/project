@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">demo</string>
+    <string name="account">Account</string>
+    <string name="enter_account">Please enter your account</string>
+    <string name="nickname">Nickname</string>
+    <string name="enter_nickname">Please enter your nickname</string>
+    <string name="security_question">Security Question</string>
+    <string name="enter_security_question">Please enter security question</string>
+    <string name="security_answer">Security Answer</string>
+    <string name="enter_security_answer">Please enter security answer</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_your_password">Please confirm your password</string>
+    <string name="forget_enter_account">Please enter your account</string>
+    <string name="forget_security_question">Security Question</string>
+    <string name="forget_security_answer">Please enter security question answer</string>
+    <string name="forget_passwordTv">Password</string>
+    <string name="forget_enter_password">Please enter password</string>
+    <string name="forget_confirm_password">Confirm Password</string>
+    <string name="forget_please_confirm_password">Please confirm your password</string>
+    <string name="forget_submit">Submit</string>
+    <string name="home_page">Home</string>
+    <string name="collect_text">Collection</string>
+    <string name="myself">My</string>
+    <string name="addRecipe_text">+</string>
+</resources>
