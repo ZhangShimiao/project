@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/checkbox_num_selector.xml" value="0.1537037037037037" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/color_cursor.xml" value="0.19114583333333332" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/corner_button.xml" value="0.19114583333333332" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.15572916666666667" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1828125" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/loading_dialog.xml" value="0.13333333333333333" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/num_oval.xml" value="0.1537037037037037" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/orange_oval.xml" value="0.1537037037037037" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/drawable/search_shape.xml" value="0.16614583333333333" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_add_recipe.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_base.xml" value="0.12590579710144928" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_change_pwd.xml" value="0.10280797101449275" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_change_self.xml" value="0.11096014492753623" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_fans_list.xml" value="0.22" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_follow_list.xml" value="0.11096014492753623" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_forget.xml" value="0.22" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_initial.xml" value="0.12590579710144928" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_main2.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_recipe_detail.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_regist.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_scan_list.xml" value="0.11639492753623189" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_search_recipes.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/activity_user_msg.xml" value="0.11096014492753623" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/adapter_comment_listitem.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/adapter_dialog_listitem.xml" value="0.22" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/adapter_follow_list.xml" value="0.5" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/adapter_recipes_listitem.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/adapter_search_listitem.xml" value="0.12182971014492754" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/dialog_common_tip.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/dialog_list.xml" value="0.22" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/dialog_loading.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/fragment_collect.xml" value="0.12182971014492754" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/fragment_follow.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/fragment_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/fragment_self.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/fragment_type.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/header_recipe_detail.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/layout/view_common_title.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/demo/app/src/main/res/xml/file_paths.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
