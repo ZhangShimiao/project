@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+  <!--查找用户名-->
+<!--  <select id="findUserName" resultType="com.example.demo.entity.User">-->
+<!--        select *-->
+<!--        from t_user-->
+<!--        where account = #{account}-->
+<!--    </select>-->
+
+<!--  &lt;!&ndash;查找账号密码&ndash;&gt;-->
+<!--  <select id="findPassword" resultType="String">-->
+<!--        select password-->
+<!--        from t_user-->
+<!--        where account = #{account}-->
+<!--    </select>-->
+
+<!--查找用户的用户名和密码，实现登录-->
+    <select id="loginPage" parameterType="String" resultType="com.example.demo.entity.User">
+        select account
+        from t_user
+        where account = #{account} and password = #{password}
+    </select>
+<!--    查找用户的用户类型，用于判断是超级管理员还是普通管理员-->
+    <select id="userType" parameterType="String" resultType="com.example.demo.entity.User">
+        select type
+        from t_user
+        where account = #{account} and password = #{password}
+    </select>
+    <insert id="addUser" parameterType="com.example.demo.entity.User">
+    insert into t_user (account, nickname,
+      password, type)
+    values (#{account}, #{nickname},
+      #{password}, #{type})
+    </insert>
+<!--    <insert id="addUser" parameterType="com.example.demo.entity.User">-->
+<!--    insert into t_user (id, account, nickname,-->
+<!--      password, type, question,-->
+<!--      answer, headimg)-->
+<!--    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},-->
+<!--      #{password,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{question,jdbcType=VARCHAR},-->
+<!--      #{answer,jdbcType=VARCHAR}, #{headimg,jdbcType=VARCHAR})-->
+<!--    </insert>-->
+<!--    <select id="selectByName" resultMap="com.example.demo.entity.User">-->
+<!--		select id, nickname,-->
+<!--		account,-->
+<!--		password, question, answer, headimg, type-->
+<!--		from t_user-->
+<!--		where-->
+<!--		account = #{account}-->
+<!--	</select>-->
+<!--  <resultMap id="BaseResultMap" type="com.example.demo.entity.User">-->
+<!--    <id column="id" jdbcType="INTEGER" property="id" />-->
+<!--    <result column="account" jdbcType="VARCHAR" property="account" />-->
+<!--    <result column="nickname" jdbcType="VARCHAR" property="nickname" />-->
+<!--    <result column="password" jdbcType="VARCHAR" property="password" />-->
+<!--    <result column="type" jdbcType="INTEGER" property="type" />-->
+<!--    <result column="question" jdbcType="VARCHAR" property="question" />-->
+<!--    <result column="answer" jdbcType="VARCHAR" property="answer" />-->
+<!--    <result column="headimg" jdbcType="VARCHAR" property="headimg" />-->
+<!--  </resultMap>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+<!--    delete from t_user-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </delete>-->
+
+<!--  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.User">-->
+<!--    update t_user-->
+<!--    set account = #{account,jdbcType=VARCHAR},-->
+<!--      nickname = #{nickname,jdbcType=VARCHAR},-->
+<!--      password = #{password,jdbcType=VARCHAR},-->
+<!--      type = #{type,jdbcType=INTEGER},-->
+<!--      question = #{question,jdbcType=VARCHAR},-->
+<!--      answer = #{answer,jdbcType=VARCHAR},-->
+<!--      headimg = #{headimg,jdbcType=VARCHAR}-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+<!--    select id, account, nickname, password, type, question, answer, headimg-->
+<!--    from t_user-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </select>-->
+<!--  <select id="selectAll" resultMap="BaseResultMap">-->
+<!--    select id, account, nickname, password, type, question, answer, headimg-->
+<!--    from t_user-->
+<!--  </select>-->
+<!--  <resultMap id="BaseResultMap" type="com.example.demo.entity.User">-->
+<!--    <id column="id" jdbcType="INTEGER" property="id" />-->
+<!--    <result column="account" jdbcType="VARCHAR" property="account" />-->
+<!--    <result column="nickname" jdbcType="VARCHAR" property="nickname" />-->
+<!--    <result column="password" jdbcType="VARCHAR" property="password" />-->
+<!--    <result column="type" jdbcType="INTEGER" property="type" />-->
+<!--    <result column="question" jdbcType="VARCHAR" property="question" />-->
+<!--    <result column="answer" jdbcType="VARCHAR" property="answer" />-->
+<!--    <result column="headimg" jdbcType="VARCHAR" property="headimg" />-->
+<!--  </resultMap>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+<!--    delete from t_user-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.example.demo.entity.User">-->
+<!--    insert into t_user (id, account, nickname, -->
+<!--      password, type, question, -->
+<!--      answer, headimg)-->
+<!--    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, -->
+<!--      #{password,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{question,jdbcType=VARCHAR}, -->
+<!--      #{answer,jdbcType=VARCHAR}, #{headimg,jdbcType=VARCHAR})-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.User">-->
+<!--    update t_user-->
+<!--    set account = #{account,jdbcType=VARCHAR},-->
+<!--      nickname = #{nickname,jdbcType=VARCHAR},-->
+<!--      password = #{password,jdbcType=VARCHAR},-->
+<!--      type = #{type,jdbcType=INTEGER},-->
+<!--      question = #{question,jdbcType=VARCHAR},-->
+<!--      answer = #{answer,jdbcType=VARCHAR},-->
+<!--      headimg = #{headimg,jdbcType=VARCHAR}-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+<!--    select id, account, nickname, password, type, question, answer, headimg-->
+<!--    from t_user-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </select>-->
+<!--  <select id="selectAll" resultMap="BaseResultMap">-->
+<!--    select id, account, nickname, password, type, question, answer, headimg-->
+<!--    from t_user-->
+<!--  </select>-->
+</mapper>
