@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.CollectionMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Collection" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="BaseResultMap2" type="com.example.demo.entity.Recipes">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="pic" jdbcType="VARCHAR" property="pic"/>
+    <result column="title" jdbcType="VARCHAR" property="title"/>
+    <result column="materials" jdbcType="VARCHAR"
+            property="materials"/>
+    <result column="steps" jdbcType="VARCHAR" property="steps"/>
+    <result column="content" jdbcType="VARCHAR" property="content"/>
+    <result column="uname" jdbcType="VARCHAR" property="uname"/>
+    <result column="tname" jdbcType="VARCHAR" property="tname"/>
+    <result column="uid" jdbcType="INTEGER" property="uid"/>
+    <result column="isLike" jdbcType="INTEGER" property="isLike"/>
+    <result column="isCollection" jdbcType="INTEGER"
+            property="isCollection"/>
+    <result column="headimg" jdbcType="VARCHAR" property="headimg"/>
+    <result column="createtime" jdbcType="TIMESTAMP"
+            property="createtime"/>
+    <result column="typeid" jdbcType="INTEGER" property="typeid"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_collection
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Collection" >
+    insert into t_collection (id, rid, uid)
+    values (#{id,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Collection" >
+    update t_collection
+    set rid = #{rid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, rid, uid
+    from t_collection
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, rid, uid
+    from t_collection
+  </select>
+  <select id="selectExist" resultMap="BaseResultMap">
+        select id, rid, uid
+        from t_collection
+        where uid = #{uid}
+          and rid = #{rid}
+    </select>
+  <select id="selectByUser" resultMap="BaseResultMap2">
+        select r.id,
+               r.pic,
+               r.title,
+               r.materials,
+               r.steps,
+               r.content,
+               r.uid,
+               r.createtime,
+               r.typeid,
+               u.nickname uname,
+               u.headimg,
+               t.name     tname
+        from t_recipes r,
+             t_user u,
+             t_type t,
+             t_collection c
+        where r.typeid = t.id
+          and r.uid = u.id
+          and c.rid = r.id
+          and c.uid = #{uid}
+        order by c.id desc
+
+    </select>
+</mapper>

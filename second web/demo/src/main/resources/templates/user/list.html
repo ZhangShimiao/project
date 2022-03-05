@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+ <link rel="stylesheet" href="/static/layui/css/layui.css"><!-- layui的核心css -->
+    <script src="/static/layui/layui.all.js"></script><!--模块化加载layui的核心js -->
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+<style type="text/css">
+.layui-table-cell {
+	height: auto;
+	white-space: normal;
+	text-align: center;
+}
+</style>
+</head>
+<body style="margin: 10px;">
+
+
+	<fieldset class="layui-elem-field">
+		<legend>用户信息管理</legend>
+		<div class="layui-field-box">
+			<table id="tb" lay-filter="tb"></table>
+		</div>
+	</fieldset>
+	<script>
+		$(document).ready(function() {
+			var form = layui.form;
+			form.render();
+			var table = layui.table;
+			table.render({
+				id : 'tb',
+				url : '/user/userTypeList',
+				elem : '#tb',
+				method : 'post',
+				cellMinWidth : 150,
+				where : {
+					type:0,
+				},
+				cols : [ [ //标题栏
+				{
+					field : 'id',
+					width : 100,
+					title : 'ID'
+				}, {
+					field : 'account',
+					width : 200,
+					title : '用户名'
+				}, {
+					field : 'nickname',
+					width : 200,
+					title : '昵称'
+				} ] ],
+				page : true
+			});
+	
+
+		});
+	</script>
+</body>
+</html>
