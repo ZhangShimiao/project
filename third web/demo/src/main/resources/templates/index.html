@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+<!--    <link rel="stylesheet" href="css/test.css" type="text/css">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--    <link rel="stylesheet" href="/static/layui/css/layui.css" >-->
+<!--    <script type="text/javascript" src="/static/layui/layui.all.js"></script>&lt;!&ndash;模块化加载layui的核心js &ndash;&gt;-->
+<!--    <script type="text/javascript" src="/static/layui/layui.all.js"></script>-->
+    <link rel="stylesheet" href="/static/layui/css/layui.css"><!-- layui的核心css -->
+    <script src="/static/layui/layui.all.js"></script><!--模块化加载layui的核心js -->
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+<!--    <script src="/static/js/echarts.min.js"></script>-->
+    <!-- 引入 layui.css -->
+<!--    <link rel="stylesheet" href="//unpkg.com/layui@2.6.8/dist/css/layui.css">-->
+
+<!--    &lt;!&ndash; 引入 layui.js &ndash;&gt;-->
+<!--    <script src="//unpkg.com/layui@2.6.8/dist/layui.js"></script>-->
+
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" style="background: #191970;">
+        <div class="layui-logo" style="color: #fff">Management System</div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a style="color: #fff" href="/user/userLogout">Logout</a></li>
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black" style="background: #191970;">
+
+        <div class="layui-side-scroll" style="background: #191970;">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-this" data-biao-shi="item"
+                    data-item="/type/list.html" style="background: #191970;"><a
+                        href="javascript:;">Type management</a></li>
+                <li class="layui-nav-item " data-biao-shi="item"
+                    data-item="/recipes/list.html" style="background: #191970;">
+                                        <a href="javascript:;">Recipe management</a></li>
+                                    <li class="layui-nav-item "  data-biao-shi="item"
+                                        data-item="/manager/list.html" style="background: #191970;">
+                                        <a href="javascript:;">Administrator management</a></li>
+                                    <li class="layui-nav-item" data-biao-shi="item"
+                                        data-item="/user/list.html" style="background: #191970;">
+                                        <a href="javascript:;">User management</a></li>
+                                    <li class="layui-nav-item"  data-biao-shi="item"
+                                        data-item="/personal/edit.html" style="background: #191970;">
+                                        <a href="javascript:;">Modify nickname</a></li>
+                                    <li class="layui-nav-item" data-biao-shi="item"
+                                        data-item="/personal/editpwd.html" style="background: #191970;">
+                                        <a href="javascript:;">Change Password</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<iframe id="iframe" scrolling="auto" frameborder="0"
+        style="margin-left: 200px;" src="/type/list.html"></iframe>
+<script>
+    function resize() {
+        var width = document.documentElement.clientWidth - 200;
+        var height = document.documentElement.clientHeight - 60;
+        $('#iframe').attr('height', height);
+        $('#iframe').attr('width', width);
+    }
+
+    $(document).ready(function () {
+        layui.element.init();
+        resize();
+        $(window).resize(function () {
+            resize();
+        });
+        $('[data-biao-shi=item]').click(function () {
+            var url = $(this).attr('data-item');
+            var iframe = $('#iframe')[0];
+            iframe.contentWindow.location.replace(url);
+        });
+    });
+</script>
+<!--<script th:inline="none">-->
+<!--    function reload() {-->
+<!--        var table = layui.table;-->
+<!--        table.reload('tb', {-->
+<!--            where : {-->
+
+<!--            }-->
+<!--        });-->
+<!--    }-->
+<!--    $(document).ready(-->
+<!--        function() {-->
+<!--            var form = layui.form;-->
+<!--            form.render();-->
+<!--            var table = layui.table;-->
+<!--            table.render({-->
+<!--                id: 'tb',-->
+<!--                url: '/type/list.do',-->
+<!--                elem: '#tb',-->
+<!--                method: 'post',-->
+<!--                cellMinWidth: 150,-->
+<!--                where: {},-->
+<!--                cols: [[-->
+<!--                    {-->
+<!--                        field: 'id',-->
+<!--                        width: 100,-->
+<!--                        title: 'ID'-->
+<!--                    }, {-->
+<!--                        field: 'name',-->
+<!--                        width: 200,-->
+<!--                        title: '分类名'-->
+<!--                    }]],-->
+<!--                page: false-->
+<!--            });-->
+<!--        }-->
+<!--    )-->
+<!--</script>-->
+<!--<table class="layui-table" lay-filter="test">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>ID</th>-->
+<!--        <th>用户名</th>-->
+<!--        <th>性别</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--</table>-->
+<!--<script>-->
+<!--    layui.use('form', function(){-->
+<!--        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功-->
+
+<!--//……-->
+
+<!--//如果你的 HTML 是动态生成的，自动渲染就会失效-->
+<!--//因此你需要在相应的地方，执行下述方法来进行渲染-->
+<!--        form.render();-->
+<!--    });-->
+<!--</script>-->
+
+
+<!--<script>-->
+<!--    layui.use('element',function () {-->
+<!--        var element = layui.element;-->
+<!--    });-->
+<!--    layui.use(['layer', 'form'], function(){-->
+<!--        var layer = layui.layer-->
+<!--            ,form = layui.form;-->
+<!--        layer.msg('welcome');-->
+<!--    });-->
+<!--</script>-->
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Add type</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"><!-- layui的核心css -->
+    <script src="/static/layui/layui.all.js"></script><!--模块化加载layui的核心js -->
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+</head>
+<body style="margin: 10px;">
+    <fieldset class="layui-elem-field">
+        <legend>Add recipe type</legend>
+        <div class="layui-field-box">
+            <form class="layui-form">
+                <div class="layui-form-item" style="margin-top: 20px; width: 40%;">
+                    <label class="layui-form-label">Type name</label>
+                    <div class="layui-input-block">
+                        <input type="text" placeholder="Please enter type name" name="name" id="name" class="layui-input">
+                    </div>
+                </div>
+                <button class="layui-btn" type="button" style="width: 200px; margin-left: 60px; margin-top: 20px;" id="btn">Add</button>
+            </form>
+        </div>
+    </fieldset>
+    <script charset="utf-8" type="text/javascript">
+        layui.use('form', function() {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            form.render();
+        });
+        //添加
+        $('#btn').click(function() {
+            var name = $('#name').val();
+            if (!name) {
+                layer.alert('分类名不能为空');
+                return;
+            }
+            var url = '/type/addRecipeType';
+            var data = {
+                name : name,
+            };
+            var index = layer.load();
+            $.post(url, data, function(res) {
+                if (res.code == 0) {
+                    window.location.href = '/type/list.html';
+                } else {
+                    layer.alert(res.msg);
+                }
+            }, 'json').always(function() {
+                //关闭弹层
+                layer.close(index);
+            });
+        });
+    </script>
+</body>
+</html>

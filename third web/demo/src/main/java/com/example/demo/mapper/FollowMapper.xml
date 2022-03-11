@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.FollowMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Follow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="followId" property="followid" jdbcType="INTEGER" />
+    <result column="beFollowId" property="befollowid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="BaseResultMap2" type="com.example.demo.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="nickname" jdbcType="VARCHAR"
+            property="nickname" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR"
+            property="password" />
+    <result column="question" jdbcType="VARCHAR"
+            property="question" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="headimg" jdbcType="VARCHAR" property="headimg" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_follow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Follow" >
+    insert into t_follow (id, followId, beFollowId
+      )
+    values (#{id,jdbcType=INTEGER}, #{followid,jdbcType=INTEGER}, #{befollowid,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Follow" >
+    update t_follow
+    set followId = #{followid,jdbcType=INTEGER},
+      beFollowId = #{befollowid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, followId, beFollowId
+    from t_follow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, followId, beFollowId
+    from t_follow
+  </select>
+  <select id="selectExist" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, followId, beFollowId
+    from t_follow
+    where followId = #{followid,jdbcType=INTEGER}
+    and  beFollowId = #{befollowid,jdbcType=INTEGER}
+  </select>
+  <select id="getFollowByUser" resultMap="BaseResultMap2">
+		select u.id, u.nickname, u.account,
+		u.password, u.question, u.answer, u.headimg, u.type
+		from t_user u,t_follow f
+		where f.followId=#{uid}
+		and f.beFollowId=u.id
+
+	</select>
+  <select id="getFansByUser" resultMap="BaseResultMap2">
+		select u.id, u.nickname, u.account,
+		u.password, u.question, u.answer, u.headimg, u.type
+		from t_user u,t_follow f
+		where f.followId=u.id
+		and f.beFollowId=#{uid}
+	</select>
+</mapper>
