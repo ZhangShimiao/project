@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <include layout="@layout/view_common_title" />
+    <LinearLayout
+        android:id="@+id/accountLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/accountEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/touming"
+            android:hint="@string/forget_enter_account"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="#979797"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_hight"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/line_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/questionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/questionTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/forget_security_question"
+            android:textStyle="bold"
+            android:textColor="#4E4F59"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/answerEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/touming"
+            android:hint="@string/forget_security_answer"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="#979797"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_hight"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/line_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/passwordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/forget_passwordTv"
+            android:textStyle="bold"
+            android:textColor="#4E4F59"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/passwordEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/touming"
+            android:hint="@string/forget_enter_password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="#979797"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_hight"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/line_color" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/forget_confirm_password"
+            android:textColor="#4E4F59"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/repasswordEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/touming"
+            android:hint="@string/forget_please_confirm_password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="#979797"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_hight"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/line_color" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/corner_button"
+        android:clickable="false"
+        android:gravity="center"
+        android:text="@string/forget_submit"
+        android:textColor="@color/white" />
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/typeTV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:paddingRight="@dimen/common_padding"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_padding"
+        android:text="Type:All"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_hight"
+        android:layout_below="@id/titleTv"
+        android:background="@color/line_color" />
+    <GridView
+        android:id="@+id/gv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:numColumns="2"
+        android:layout_weight="1"
+        android:divider="@color/line_color"
+        android:dividerHeight="@dimen/line_hight"
+        android:listSelector="@color/touming"
+        android:scrollbars="none" />
+</LinearLayout>
