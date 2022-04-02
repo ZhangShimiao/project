@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Edit administrator information</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"><!-- layui的核心css -->
+    <script src="/static/layui/layui.all.js"></script><!--模块化加载layui的核心js -->
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+</head>
+<body style="margin: 10px;">
+    <fieldset class="layui-elem-field">
+        <legend>Edit administrator information</legend>
+        <div class="layui-field-box">
+            <form class="layui-form">
+                <div class="layui-form-item" style="margin-top: 20px; width: 40%;">
+                    <label class="layui-form-label">Username</label>
+                    <div class="layui-input-block">
+                        <input type="text" placeholder="Please enter username" name="account" id="account" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="margin-top: 20px; width: 40%;">
+                    <label class="layui-form-label">Nickname</label>
+                    <div class="layui-input-block">
+                        <input type="text" placeholder="Please enter nickname" name="name" id="name" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="margin-top: 20px; width: 40%;">
+                    <label class="layui-form-label">Password</label>
+                    <div class="layui-input-block">
+                        <input type="password" placeholder="Please enter password" name="password" id="password" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="margin-top: 20px; width: 40%;">
+                    <label class="layui-form-label">Confirm password</label>
+                    <div class="layui-input-block">
+                        <input type="password" placeholder="Please enter password again" name="repassword" id="repassword" class="layui-input">
+                    </div>
+                </div>
+                <button class="layui-btn" type="button" style="width: 200px; margin-left: 60px; margin-top: 20px;" id="btn">Save</button>
+            </form>
+        </div>
+    </fieldset>
+    <script charset="utf-8" type="text/javascript">
+        //从url中获取携带的参数
+        var uid = location.search.split("=");
+        //查询要修改的数据
+        $.ajax({
+            url : "/user/selectById?id="
+                + uid[1],
+            type : "get",
+            dataType : "json",
+            success : function(res) {
+                console.log(res.data);
+                $("#account").val(res.data.account);
+                $("#name").val(res.data.nickname);
+                $("#password").val(res.data.password);
+                $("#repassword").val(res.data.password);
+                layui.use('form', function() {
+                    var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                    form.render();
+                });
+            }
+        });
+        //添加
+        $('#btn').click(function() {
+            var account = $('#account').val();
+            var name = $('#name').val();
+            var password = $('#password').val();
+            var repassword = $('#repassword').val();
+            if (!account) {
+                layer.alert('用户名不能为空');
+                return;
+            }
+            if (!name) {
+                layer.alert('昵称不能为空');
+                return;
+            }
+            if (!password) {
+                layer.alert('密码不能为空');
+                return;
+            }
+            if (!repassword) {
+                layer.alert('确认密码不能为空');
+                return;
+            }
+            if (repassword != password) {
+                layer.alert('密码不一致');
+                return;
+            }
+            var url = '/user/editUser';
+            var data = {
+                id : uid[1],
+                account : account,
+                nickname : name,
+                password : password,
+                type : 1,
+            };
+            var index = layer.load();
+            $.post(url, data, function(res) {
+                if (res.code == 0) {
+                    window.location.href = '/manager/list.html';
+                } else {
+                    layer.alert(res.msg);
+                }
+
+            }, 'json').always(function() {
+                //关闭弹层
+                layer.close(index);
+            });
+
+        });
+    </script>
+
+</body>
+</html>

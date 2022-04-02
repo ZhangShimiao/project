@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.RecipesMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Recipes" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="materials" property="materials" jdbcType="VARCHAR" />
+    <result column="steps" property="steps" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="typeid" property="typeid" jdbcType="INTEGER" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="tname" jdbcType="VARCHAR" property="tname" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+<!--    <result column="isLike" jdbcType="INTEGER" property="isLike" />-->
+    <result column="isCollection" jdbcType="INTEGER" property="isCollection" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_recipes
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Recipes" >
+    insert into t_recipes (id, pic, title, 
+      materials, steps, content, 
+      uid, typeid
+      )
+    values (#{id,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{materials,jdbcType=VARCHAR}, #{steps,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}
+      )
+  </insert>
+    <select id="selectByUser" resultMap="BaseResultMap">
+		select r.id, r.pic, r.title,
+		r.materials, r.steps, r.content, r.uid, r.createtime, r.typeid,
+		u.nickname uname,u.headimg,t.name tname
+		from t_recipes r,t_user
+		u,t_type t
+		where r.typeid=t.id
+		and r.uid=u.id
+		and r.uid=#{uid}
+		order by
+		r.id desc
+	</select>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Recipes" >
+    update t_recipes
+    set pic = #{pic,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      materials = #{materials,jdbcType=VARCHAR},
+      steps = #{steps,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      typeid = #{typeid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select r.id, r.pic,
+		r.title,
+		r.materials, r.steps, r.content, r.uid, r.createtime,
+		r.typeid,
+		u.nickname uname,u.headimg,t.name tname
+	from t_recipes r,t_user u,t_type t
+	where r.typeid=t.id and r.uid=u.id and r.id=#{id,jdbcType=INTEGER}
+  </select>
+    <select id="recipesSearch" resultMap="BaseResultMap">
+        select r.id, r.pic, r.title,
+        r.materials, r.steps, r.content, r.uid, r.createtime, r.typeid,
+        u.nickname uname,u.headimg,t.name tname
+        from t_recipes r,t_user
+        u,t_type t
+        where r.typeid=t.id
+        and r.uid=u.id
+        <if test="keyword != null and keyword != ''">
+            AND ((r.title like '%' #{keyword} '%') or (t.name like '%' #{keyword} '%'))
+        </if>
+        order
+        by r.id desc
+    </select>
+    <select id="selectByPrimaryKey2"
+            parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select r.id, r.pic,
+		r.title,
+		r.materials, r.steps, r.content, r.uid, r.createtime,
+		r.typeid,
+		u.nickname uname,u.headimg,t.name tname,
+		(select
+		count(id) from t_collection where uid=#{uid} and rid=#{id}) as
+		isCollection
+		from t_recipes
+		r,t_user u,t_type t
+		where r.typeid=t.id
+		and
+		r.uid=u.id
+		and r.id =
+		#{id,jdbcType=INTEGER}
+	</select>
+    <select id="selectAll" resultMap="BaseResultMap">
+		select r.id, r.pic, r.title,
+		r.materials, r.steps, r.content, r.uid, r.createtime, r.typeid,
+		u.nickname uname,u.headimg,t.name tname
+		from t_recipes r,t_user
+		u,t_type t
+		where r.typeid=t.id
+		and r.uid=u.id
+		order
+		by r.id desc
+	</select>
+  <select id="selectAllCount" resultType="int">
+		select count(id)
+		from
+		t_recipes
+  </select>
+  <select id="selectByPage" resultMap="BaseResultMap">
+		select r.id, r.pic, r.title,
+		r.materials, r.steps, r.content, r.uid, r.createtime, r.typeid,
+		u.nickname uname,u.headimg,t.name tname
+		from t_recipes r,t_user
+		u,t_type t
+		where r.typeid=t.id
+		and r.uid=u.id
+		order
+		by r.id desc
+		limit
+		#{start},#{size}
+	</select>
+    <select id="selectByType" resultMap="BaseResultMap">
+        select r.id, r.pic, r.title,
+        r.materials, r.steps, r.content, r.uid, r.createtime, r.typeid,
+        u.nickname uname,u.headimg,t.name tname
+        from t_recipes r,t_user
+        u,t_type t
+        where r.typeid=t.id
+        and r.uid=u.id
+        <if test="typeid >0">
+            and r.typeid=#{typeid}
+        </if>
+        order by
+        r.id desc
+    </select>
+</mapper>
